@@ -74,10 +74,8 @@ def order_fields_by_schema(fields, schema):
 
     """
 
-    fieldcount = len(fields)
     order = dict((key, f.order) for key, f in getFields(schema).items())
-
-    return sorted(fields, key=lambda field: order.get(field, fieldcount))
+    return sorted(fields, key=lambda field: order.get(field, sys.maxint))
 
 
 @public
