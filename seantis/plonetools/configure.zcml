@@ -10,7 +10,19 @@
     i18n_domain="seantis.plonetools"
     >
 
-<!-- Dependencies -->
-<includeDependencies package="." />
+    <!-- Dependencies -->
+    <includeDependencies package="." />
+
+    <!-- Profiles -->
+    <genericsetup:registerProfile 
+        name="default"
+        title="Seantis Plonetools"
+        description="Default Profile for Seantis Plonetools"
+        directory="profiles/default"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+    <!-- Resources -->
+    <browser:resourceDirectory name="seantis.plonetools.js" directory="js"/>
 
 </configure>
