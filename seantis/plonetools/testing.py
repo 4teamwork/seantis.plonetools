@@ -16,7 +16,7 @@ from plone import api
 
 from collective.betterbrowser import new_browser
 
-from seantis.plonetools import utils
+from seantis.plonetools import tools
 
 
 def install_mailhost(portal, mailhost):
@@ -138,7 +138,7 @@ class TestCase(unittest.TestCase):
 
         """
         with self.user('admin'):
-            new_type = utils.add_new_dexterity_type(uuid.uuid4().hex, **kwargs)
+            new_type = tools.add_new_dexterity_type(uuid.uuid4().hex, **kwargs)
             self.temporary_types.append(new_type)
 
             return new_type

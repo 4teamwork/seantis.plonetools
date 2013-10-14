@@ -2,6 +2,11 @@
 Changelog
 =========
 
+0.3 (unreleased)
+---
+
+- Renames utils.py to tools.py
+
 0.2
 ---
 

@@ -2,10 +2,10 @@ from App.config import getConfiguration, setConfiguration
 from plone import api
 
 from seantis.plonetools import tests
-from seantis.plonetools import utils
+from seantis.plonetools import tools
 
 
-class TestUtils(tests.IntegrationTestCase):
+class TestTools(tests.IntegrationTestCase):
 
     def test_get_parent(self):
 
@@ -19,13 +19,13 @@ class TestUtils(tests.IntegrationTestCase):
                 container=folder
             )
 
-        brain = utils.get_brain_by_object(obj)
+        brain = tools.get_brain_by_object(obj)
 
-        self.assertEqual(utils.get_parent(brain).title, 'parent')
-        self.assertEqual(utils.get_parent(obj).title, 'parent')
+        self.assertEqual(tools.get_parent(brain).title, 'parent')
+        self.assertEqual(tools.get_parent(obj).title, 'parent')
 
-        self.assertIs(type(utils.get_parent(brain)), type(brain))
-        self.assertIs(type(utils.get_parent(obj)), type(obj))
+        self.assertIs(type(tools.get_parent(brain)), type(brain))
+        self.assertIs(type(tools.get_parent(obj)), type(obj))
 
     def test_in_debug_mode(self):
         cfg = getConfiguration()
@@ -33,18 +33,18 @@ class TestUtils(tests.IntegrationTestCase):
         cfg.debug_mode = False
         setConfiguration(cfg)
 
-        self.assertFalse(utils.in_debug_mode())
+        self.assertFalse(tools.in_debug_mode())
 
         cfg.debug_mode = True
         setConfiguration(cfg)
 
-        self.assertTrue(utils.in_debug_mode())
+        self.assertTrue(tools.in_debug_mode())
 
     def test_is_existing_portal_type(self):
         new_type = self.new_temporary_type()
 
-        self.assertTrue(utils.is_existing_portal_type(new_type.id))
-        self.assertFalse(utils.is_existing_portal_type('inexistant'))
+        self.assertTrue(tools.is_existing_portal_type(new_type.id))
+        self.assertFalse(tools.is_existing_portal_type('inexistant'))
 
     def test_get_type_info_by_behavior(self):
         basic_behavior = 'plone.app.dexterity.behaviors.metadata.IBasic'
@@ -53,14 +53,14 @@ class TestUtils(tests.IntegrationTestCase):
         self.new_temporary_type(behaviors=[])
 
         self.assertEqual(
-            utils.get_type_info_by_behavior(basic_behavior), [basic_type]
+            tools.get_type_info_by_behavior(basic_behavior), [basic_type]
         )
 
     def test_get_schema_from_portal_type(self):
         new_type = self.new_temporary_type()
 
         self.assertEqual(
-            utils.get_schema_from_portal_type(new_type.id),
+            tools.get_schema_from_portal_type(new_type.id),
             new_type.lookupSchema()
         )
 
@@ -72,7 +72,7 @@ class TestUtils(tests.IntegrationTestCase):
                 container=self.new_temporary_folder()
             )
 
-        brain = utils.get_brain_by_object(obj)
+        brain = tools.get_brain_by_object(obj)
         self.assertIs(type(brain.getObject()), type(obj))
         self.assertEqual(brain.id, obj.id)
 
@@ -86,16 +86,16 @@ class TestUtils(tests.IntegrationTestCase):
             'x': [1, 2],
             'y': [3]
         }
-        self.assertEqual(utils.invert_dictionary(input), output)
+        self.assertEqual(tools.invert_dictionary(input), output)
 
     def test_add_attribute_to_metadata(self):
         catalog = api.portal.get_tool('portal_catalog')
 
-        utils.add_attribute_to_metadata('test')
+        tools.add_attribute_to_metadata('test')
         self.assertIn('test', catalog._catalog.schema)
 
         # ensure that a second call doesn't do anything
-        utils.add_attribute_to_metadata('test')
+        tools.add_attribute_to_metadata('test')
         self.assertIn('test', catalog._catalog.schema)
 
     def test_order_fields_by_schema(self):
@@ -111,7 +111,7 @@ class TestUtils(tests.IntegrationTestCase):
         schema = self.new_temporary_type(model_source=model).lookupSchema()
 
         self.assertEqual(
-            utils.order_fields_by_schema(
+            tools.order_fields_by_schema(
                 ['second', 'x', 'last', 'first'], schema
             ),
             ['first', 'second', 'x', 'last']
