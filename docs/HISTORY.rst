@@ -2,7 +2,12 @@
 Changelog
 =========
 
-0.3 (unreleased)
+0.4 (unreleased)
+---
+
+- New function to search for Dexterity FTI's that use a certain schema
+
+0.3
 ---
 
 - Renames utils.py to tools.py

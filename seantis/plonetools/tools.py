@@ -13,17 +13,17 @@ from zope.schema import getFields
 
 
 def public(f):
-  """Use a decorator to avoid retyping function/class names.
+    """ Use a decorator to avoid retyping function/class names.
 
-  * Based on an idea by Duncan Booth:
-  http://groups.google.com/group/comp.lang.python/msg/11cbb03e09611b8a
-  * Improved via a suggestion by Dave Angel:
-  http://groups.google.com/group/comp.lang.python/msg/3d400fb22d8a42e1
-  """
-  all = sys.modules[f.__module__].__dict__.setdefault('__all__', [])
-  if f.__name__ not in all:  # Prevent duplicates if run from an IDE.
-      all.append(f.__name__)
-  return f
+      * Based on an idea by Duncan Booth:
+      http://groups.google.com/group/comp.lang.python/msg/11cbb03e09611b8a
+      * Improved via a suggestion by Dave Angel:
+      http://groups.google.com/group/comp.lang.python/msg/3d400fb22d8a42e1
+    """
+    all = sys.modules[f.__module__].__dict__.setdefault('__all__', [])
+    if f.__name__ not in all:  # Prevent duplicates if run from an IDE.
+        all.append(f.__name__)
+    return f
 
 
 @public
@@ -57,6 +57,14 @@ def get_type_info_by_behavior(behavior):
 
     ftis = getAllUtilitiesRegisteredFor(IDexterityFTI)
     return [fti for fti in ftis if behavior in fti.behaviors]
+
+
+@public
+def get_type_info_by_schema(schema):
+    """ Returns a list of Dexterity ftis using the given schema. """
+
+    ftis = getAllUtilitiesRegisteredFor(IDexterityFTI)
+    return [fti for fti in ftis if schema == fti.lookupSchema()]
 
 
 @public

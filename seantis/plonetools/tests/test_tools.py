@@ -56,6 +56,21 @@ class TestTools(tests.IntegrationTestCase):
             tools.get_type_info_by_behavior(basic_behavior), [basic_type]
         )
 
+    def test_get_type_info_by_schema(self):
+        model = """<?xml version='1.0' encoding='utf8'?>
+        <model xmlns="http://namespaces.plone.org/supermodel/schema">
+            <schema>
+                <field name="foo" type="zope.schema.TextLine" />
+            </schema>
+        </model>
+        """
+
+        new_type = self.new_temporary_type(model_source=model)
+        self.assertEqual(
+            tools.get_type_info_by_schema(new_type.lookupSchema()),
+            [new_type]
+        )
+
     def test_get_schema_from_portal_type(self):
         new_type = self.new_temporary_type()
 
