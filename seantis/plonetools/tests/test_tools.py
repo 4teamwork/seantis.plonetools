@@ -1,6 +1,9 @@
 from App.config import getConfiguration, setConfiguration
 from plone import api
 
+from zope import i18n
+from zope.i18nmessageid import MessageFactory
+
 from seantis.plonetools import tests
 from seantis.plonetools import tools
 
@@ -130,4 +133,11 @@ class TestTools(tests.IntegrationTestCase):
                 ['second', 'x', 'last', 'first'], schema
             ),
             ['first', 'second', 'x', 'last']
+        )
+
+    def test_translator(self):
+        _ = MessageFactory('plone')
+        self.assertEqual(
+            tools.translator(self.request, domain='plone')(_(u'Comment')),
+            i18n.translate(_(u'Comment'), target_language='en', domain='plone')
         )

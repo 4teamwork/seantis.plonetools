@@ -1,5 +1,8 @@
 import sys
+from functools import partial
+
 from App.config import getConfiguration
+
 from plone import api
 from plone.dexterity.fti import (
     register as register_dexterity_type,
@@ -7,9 +10,13 @@ from plone.dexterity.fti import (
 )
 from plone.dexterity.interfaces import IDexterityFTI
 from Products.ZCatalog.interfaces import ICatalogBrain
+
+from zope.component import getMultiAdapter
+from zope.component.hooks import getSite
 from zope.component import getUtility, getAllUtilitiesRegisteredFor
 from zope.component.interfaces import ComponentLookupError
 from zope.schema import getFields
+from zope import i18n
 
 
 def public(f):
@@ -164,3 +171,27 @@ def invert_dictionary(dictionary):
         inverted[v].append(k)
 
     return inverted
+
+
+@public
+def get_current_language(request):
+    """ Returns the current language of the request. """
+    portal_state = getMultiAdapter(
+        (getSite(), request), name=u'plone_portal_state'
+    )
+    return portal_state.language()
+
+
+@public
+def translator(request, domain=None):
+    """ Returns a function which takes a single string and translates it using
+    the curried language of the request
+
+    """
+
+    # xx-xx languages will not work here, though they work when Plone does
+    # it in a template. For now it does not matter as we have no country
+    # specific translation available
+    lang = get_current_language(request).split('-')[0]
+
+    return partial(i18n.translate, target_language=lang, domain=domain)

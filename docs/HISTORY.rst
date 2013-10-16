@@ -7,6 +7,8 @@ Changelog
 
 - New function to search for Dexterity FTI's that use a certain schema
 
+- New translator function for translating text with the request language
+
 0.3
 ---
 
