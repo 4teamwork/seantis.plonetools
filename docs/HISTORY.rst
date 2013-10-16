@@ -2,7 +2,7 @@
 Changelog
 =========
 
-0.4 (unreleased)
+0.4
 ---
 
 - New function to search for Dexterity FTI's that use a certain schema
