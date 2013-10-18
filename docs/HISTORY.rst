@@ -2,6 +2,11 @@
 Changelog
 =========
 
+0.5 (unreleased)
+----------------
+
+- Adds Email and Website fields for supermodel, schemaeditor, zope.schema
+
 0.4
 ---
 

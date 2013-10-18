@@ -13,6 +13,9 @@
     <!-- Dependencies -->
     <includeDependencies package="." />
 
+    <!-- Translation -->
+    <i18n:registerTranslations directory="locales" />
+
     <!-- Profiles -->
     <genericsetup:registerProfile 
         name="default"
@@ -24,5 +27,29 @@
 
     <!-- Resources -->
     <browser:resourceDirectory name="seantis.plonetools.js" directory="js"/>
+
+    <!-- Email Textfield with Validator and Schemaeditor/Supermodel support -->
+    <utility zcml:condition="installed plone.schemaeditor"
+        name="seantis.plonetools.Email"
+        component=".schemafields.EmailFactory"
+    />
+    
+    <utility zcml:condition="installed plone.supermodel"
+        name="seantis.plonetools.Email"
+        component=".schemafields.EmailHandler"
+    />
+
+    <!-- URI Textfield with Validator and Schemaeditor/Supermodel support.
+         Doesn't require the user to specify http:// explicitly 
+     -->
+    <utility zcml:condition="installed plone.schemaeditor"
+        name="seantis.plonetools.Website"
+        component=".schemafields.WebsiteFactory"
+    />
+    
+    <utility zcml:condition="installed plone.supermodel"
+        name="seantis.plonetools.Website"
+        component=".schemafields.WebsiteHandler"
+    />
 
 </configure>
