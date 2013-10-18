@@ -5,7 +5,7 @@ name = 'seantis.plonetools'
 description = (
   "A collection of tools shared with different Seantis Plone modules."
 )
-version = '0.5'
+version = '0.6'
 
 # needed for tests and to use the default testcase of seantis.plonetools
 tests_require = [

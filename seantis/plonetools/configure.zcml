@@ -30,12 +30,12 @@
 
     <!-- Email Textfield with Validator and Schemaeditor/Supermodel support -->
     <utility zcml:condition="installed plone.schemaeditor"
-        name="seantis.plonetools.Email"
+        name="seantis.plonetools.schemafields.Email"
         component=".schemafields.EmailFactory"
     />
     
     <utility zcml:condition="installed plone.supermodel"
-        name="seantis.plonetools.Email"
+        name="seantis.plonetools.schemafields.Email"
         component=".schemafields.EmailHandler"
     />
 
@@ -43,12 +43,12 @@
          Doesn't require the user to specify http:// explicitly 
      -->
     <utility zcml:condition="installed plone.schemaeditor"
-        name="seantis.plonetools.Website"
+        name="seantis.plonetools.schemafields.Website"
         component=".schemafields.WebsiteFactory"
     />
     
     <utility zcml:condition="installed plone.supermodel"
-        name="seantis.plonetools.Website"
+        name="seantis.plonetools.schemafields.Website"
         component=".schemafields.WebsiteHandler"
     />
 
