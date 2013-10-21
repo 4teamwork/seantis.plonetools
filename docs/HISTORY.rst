@@ -2,8 +2,8 @@
 Changelog
 =========
 
-0.6 (unreleased)
-----------------
+0.6
+---
 
 - Fixes the schemafields from being unwritable by the supermodel
 
