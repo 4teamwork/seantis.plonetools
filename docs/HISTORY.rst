@@ -2,6 +2,11 @@
 Changelog
 =========
 
+0.7 (unreleased)
+----------------
+
+- Adds a DRY version of http://maurits.vanrees.org/weblog/archive/2009/12/catalog
+
 0.6
 ---
 
