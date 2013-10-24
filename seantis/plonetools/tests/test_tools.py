@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from App.config import getConfiguration, setConfiguration
 from plone import api
 
@@ -140,4 +142,10 @@ class TestTools(tests.IntegrationTestCase):
         self.assertEqual(
             tools.translator(self.request, domain='plone')(_(u'Comment')),
             i18n.translate(_(u'Comment'), target_language='en', domain='plone')
+        )
+
+    def test_unicode_collate_sortkey(self):
+        self.assertEqual(
+            sorted(u'AaÄäÖöOo', key=tools.unicode_collate_sortkey()),
+            list(u'aAäÄoOöÖ')
         )

@@ -1,4 +1,5 @@
 import sys
+import os.path
 from functools import partial
 
 from App.config import getConfiguration
@@ -17,6 +18,12 @@ from zope.component import getUtility, getAllUtilitiesRegisteredFor
 from zope.component.interfaces import ComponentLookupError
 from zope.schema import getFields
 from zope import i18n
+
+
+import pyuca
+
+allkeys = os.path.join('/'.join(os.path.split(__file__)[:-1]), 'allkeys.txt')
+collator = pyuca.Collator(allkeys)
 
 
 def public(f):
@@ -195,3 +202,24 @@ def translator(request, domain=None):
     lang = get_current_language(request).split('-')[0]
 
     return partial(i18n.translate, target_language=lang, domain=domain)
+
+
+@public
+def unicode_collate_sortkey(case_sensitive=True):
+    """ Returns a sort function to sanely sort unicode values.
+
+    A more exact solution would be to use pyUCA but that relies on an external
+    C Library and is more complicated
+
+    See:
+    http://stackoverflow.com
+    /questions/1097908/how-do-i-sort-unicode-strings-alphabetically-in-python
+    http://en.wikipedia.org/wiki/ISO_14651
+    http://unicode.org/reports/tr10/
+    http://pypi.python.org/pypi/PyICU
+    http://jtauber.com/blog/2006/01/27/python_unicode_collation_algorithm/
+    https://github.com/href/Python-Unicode-Collation-Algorithm
+
+    """
+
+    return collator.sort_key
