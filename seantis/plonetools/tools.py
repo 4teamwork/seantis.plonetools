@@ -1,6 +1,8 @@
 import sys
 import os.path
-from functools import partial
+import time
+
+from functools import partial, wraps
 
 from App.config import getConfiguration
 
@@ -223,3 +225,19 @@ def unicode_collate_sortkey(case_sensitive=True):
     """
 
     return collator.sort_key
+
+
+@public
+def profile(fn):
+    """ Naive profiling of a function.. on unix systems only. """
+
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        start = time.time()
+
+        result = fn(*args, **kwargs)
+        print fn.__name__, 'took', (time.time() - start) * 1000, 'ms'
+
+        return result
+
+    return wrapper

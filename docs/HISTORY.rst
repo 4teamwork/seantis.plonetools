@@ -5,6 +5,10 @@ Changelog
 0.7 (unreleased)
 ----------------
 
+- Adds a naive profiler function
+
+- Adds a unicode collation sortkey
+
 - Adds a DRY version of http://maurits.vanrees.org/weblog/archive/2009/12/catalog
 
 0.6
