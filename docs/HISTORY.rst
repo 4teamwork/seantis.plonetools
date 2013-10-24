@@ -2,8 +2,8 @@
 Changelog
 =========
 
-0.7 (unreleased)
-----------------
+0.7
+---
 
 - Adds a naive profiler function
 
