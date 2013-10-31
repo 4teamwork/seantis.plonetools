@@ -45,6 +45,10 @@ def public(f):
 
 @public
 def safe_html(html):
+    """ Returns the given html without dangerous elements like <script/>. The
+    result will still contain html however, not replacments like '&gt;'.
+
+    """
     return scrubHTML(html, raise_error=False)
 
 
