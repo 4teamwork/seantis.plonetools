@@ -13,6 +13,7 @@ from plone.dexterity.fti import (
 )
 from plone.dexterity.interfaces import IDexterityFTI
 from Products.ZCatalog.interfaces import ICatalogBrain
+from Products.PortalTransforms.transforms.safe_html import scrubHTML
 
 from zope.component import getMultiAdapter
 from zope.component.hooks import getSite
@@ -40,6 +41,11 @@ def public(f):
     if f.__name__ not in all:  # Prevent duplicates if run from an IDE.
         all.append(f.__name__)
     return f
+
+
+@public
+def safe_html(html):
+    return scrubHTML(html, raise_error=False)
 
 
 @public

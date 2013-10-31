@@ -2,6 +2,11 @@
 Changelog
 =========
 
+0.8 (unreleased)
+----------------
+
+- Adds a safe_html function
+
 0.7
 ---
 

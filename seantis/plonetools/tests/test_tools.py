@@ -51,6 +51,12 @@ class TestTools(tests.IntegrationTestCase):
         self.assertTrue(tools.is_existing_portal_type(new_type.id))
         self.assertFalse(tools.is_existing_portal_type('inexistant'))
 
+    def test_safe_html(self):
+        self.assertEqual(
+            '<div></div>',
+            tools.safe_html('<div><script>alert("x");</script></div>')
+        )
+
     def test_get_type_info_by_behavior(self):
         basic_behavior = 'plone.app.dexterity.behaviors.metadata.IBasic'
 
