@@ -6,6 +6,8 @@ from plone import api
 from zope import i18n
 from zope.i18nmessageid import MessageFactory
 
+from Products.ZCatalog.interfaces import ICatalogBrain
+
 from seantis.plonetools import tests
 from seantis.plonetools import tools
 
@@ -26,11 +28,11 @@ class TestTools(tests.IntegrationTestCase):
 
         brain = tools.get_brain_by_object(obj)
 
-        self.assertEqual(tools.get_parent(brain).title, 'parent')
+        self.assertEqual(tools.get_parent(brain).Title, 'parent')
         self.assertEqual(tools.get_parent(obj).title, 'parent')
 
-        self.assertIs(type(tools.get_parent(brain)), type(brain))
-        self.assertIs(type(tools.get_parent(obj)), type(obj))
+        self.assertTrue(ICatalogBrain.providedBy(tools.get_parent(brain)))
+        self.assertTrue(isinstance(tools.get_parent(obj), folder.__class__))
 
     def test_in_debug_mode(self):
         cfg = getConfiguration()

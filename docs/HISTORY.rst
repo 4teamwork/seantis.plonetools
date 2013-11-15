@@ -7,6 +7,8 @@ Changelog
 
 - Adds a safe_html function
 
+- Fixes tools.get_parent returning a non-brain parent for brain input
+
 0.7
 ---
 

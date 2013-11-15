@@ -60,7 +60,11 @@ def get_parent(obj):
     """
 
     if ICatalogBrain.providedBy(obj):
-        return api.content.get(path='/'.join(obj.getPath().split('/')[:-1]))
+        catalog = api.portal.get_tool('portal_catalog')
+        brains = catalog(
+            path={'query': '/'.join(obj.getPath().split('/')[:-1])}
+        )
+        return brains[0]
     else:
         return obj.aq_inner.aq_parent
 
