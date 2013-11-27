@@ -2,6 +2,12 @@
 Changelog
 =========
 
+0.9 (unreleased)
+----------------
+
+- The new_dexterity_type function no longer overwrites the 'klass' attribute.
+  Fixes #1.
+
 0.8
 ---
 

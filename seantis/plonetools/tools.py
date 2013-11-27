@@ -151,7 +151,9 @@ def add_new_dexterity_type(name, **kwargs):
     Behaviors may be given as a list (Dexterity needs a multiline string).
     """
     new_type = DexterityFTI(name)
-    kwargs['klass'] = 'plone.dexterity.content.Container'
+
+    if not 'klass' in kwargs:
+        kwargs['klass'] = 'plone.dexterity.content.Container'
 
     if 'behaviors' in kwargs:
         if isinstance(kwargs['behaviors'], list):
