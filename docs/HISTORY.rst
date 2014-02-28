@@ -5,7 +5,9 @@ Changelog
 0.10 (unreleased)
 -----------------
 
-- Nothing yet.
+- Adds base classes for forms and views that include helper functions. Subject
+  to change as a good middle ground for different modules is found.
+  [href]
 
 0.9
 ---

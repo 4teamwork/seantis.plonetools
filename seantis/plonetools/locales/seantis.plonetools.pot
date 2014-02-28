@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-10-18 12:22+0000\n"
+"POT-Creation-Date: 2014-02-28 16:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,28 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: seantis.plonetools\n"
 
+#: ./browser/baseform.py:29
+msgid "Cancel"
+msgstr ""
+
+#: ./browser/baseform.py:68
+msgid "Changes saved"
+msgstr ""
+
 #: ./schemafields.py:51
 msgid "Email"
 msgstr ""
 
 #: ./schemafields.py:45
 msgid "Invalid email address"
+msgstr ""
+
+#: ./browser/baseform.py:70
+msgid "No changes saved"
+msgstr ""
+
+#: ./browser/baseform.py:28
+msgid "Save"
 msgstr ""
 
 #: ./schemafields.py:53
