@@ -2,7 +2,7 @@
 Changelog
 =========
 
-0.10 (unreleased)
+0.10 (2014-03-03)
 -----------------
 
 - Adds script to install the BeakerSessionDataManager to a Zope instance.
