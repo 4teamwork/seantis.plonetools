@@ -2,6 +2,12 @@
 Changelog
 =========
 
+0.11 (unreleased)
+-----------------
+
+- Adds basegroup class for easy formset/formgroup management on forms.
+  [href]
+
 0.10 (2014-03-03)
 -----------------
 

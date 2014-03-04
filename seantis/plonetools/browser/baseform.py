@@ -15,7 +15,7 @@ from seantis.plonetools.browser.shared import (
 )
 
 
-class BaseForm(Form, ExtensibleForm, TranslateMixin, StatusMessageMixin):
+class BaseForm(ExtensibleForm, Form, TranslateMixin, StatusMessageMixin):
     """ Baseform which should serve as a base for any and all Plone Forms
     by Seantis. It abstracts away some complexity from the underlying z3c forms
     and provides often used methods.
