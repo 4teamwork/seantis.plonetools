@@ -52,4 +52,20 @@
         component=".schemafields.WebsiteHandler"
     />
 
+    <!-- Events -->
+    <subscriber
+        for="seantis.plonetools.behaviors.ICustomTitle
+             zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+        handler=".behaviors.customtitle.on_object_modified"
+    />
+
+    <!-- Behaviors -->
+    <plone:behavior
+        title="Custom Title"
+        description="Used to dynamically define an object's title in Python"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        provides=".behaviors.ICustomTitle"
+    />
+    <adapter factory=".behaviors.CustomTitle" />
+
 </configure>

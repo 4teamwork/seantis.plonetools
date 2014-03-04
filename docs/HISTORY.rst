@@ -5,6 +5,10 @@ Changelog
 0.11 (unreleased)
 -----------------
 
+- Adds custom title behavior which allos to set the title/id of an object
+  easily.
+  [href]
+
 - Adds basegroup class for easy formset/formgroup management on forms.
   [href]
 
