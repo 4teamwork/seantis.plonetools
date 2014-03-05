@@ -8,8 +8,21 @@ class ICustomTitle(Interface):
 
 
 class CustomTitle(object):
-    """ Uses the fields defined as title by seantis.people.supermodel to
-    generate a title for a new object.
+    """ Calls get_custom_title on a dexterity type's class to get the
+    title and id on creation. To use add the following to your dexterity
+    type xml:
+
+    <!-- enabled behaviors -->
+    <property name="behaviors">
+        <element
+            value="seantis.plonetools.behaviors.customtitle.ICustomTitle"
+        />
+    </property>
+
+    And add get_custom_title to your class defined in <property name="klass">:
+
+    def get_custom_title(self):
+        return u'My custom title'
 
     """
     implements(INameFromTitle)
