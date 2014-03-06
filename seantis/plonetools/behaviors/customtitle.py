@@ -43,3 +43,4 @@ class CustomTitle(object):
 
 def on_object_modified(obj, event=None):
     obj.setTitle(obj.get_custom_title())
+    obj.reindexObject()
