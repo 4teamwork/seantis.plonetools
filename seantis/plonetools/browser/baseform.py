@@ -27,6 +27,19 @@ class BaseForm(ExtensibleForm, Form, TranslateMixin, StatusMessageMixin):
 
     grok.baseclass()
 
+    created_msg = _(u"Item created")
+    changed_msg = _(u"Changes saved")
+    unchanged_msg = _(u"No changes saved")
+
+    def __init__(self, *args, **kwargs):
+        super(BaseForm, self).__init__(*args, **kwargs)
+
+        try:
+            from plone.directives.dexterity import AddForm
+            self.is_add_form = isinstance(self, AddForm)
+        except ImportError:
+            self.is_add_form = False
+
     def update(self):
         self.prepare_actions()
         super(BaseForm, self).update()
@@ -111,6 +124,13 @@ class BaseForm(ExtensibleForm, Form, TranslateMixin, StatusMessageMixin):
 
         return button_handler_fn(self)
 
+    def before_save(self, data):
+        """ Called with the validated data before the changes are applied.
+        Liast chance to add custom validations.
+
+        """
+        pass
+
     def handle_save(self):
         """ Default handler for saves. Gets the data, applies them and
         shows a message if there were changes. Redirects to self.success_url
@@ -122,10 +142,20 @@ class BaseForm(ExtensibleForm, Form, TranslateMixin, StatusMessageMixin):
         if data is None:
             return
 
-        if self.applyChanges(data):
-            self.message(_(u'Changes saved'))
+        self.before_save(data)
+
+        if self.is_add_form:
+            obj = self.createAndAdd(data)
+            if obj is not None:
+                self._finishedAdd = True
+                self.message(self.created_msg)
+            else:
+                return
         else:
-            self.message(_(u'No changes saved'))
+            if self.applyChanges(data):
+                self.message(self.changed_msg)
+            else:
+                self.message(self.unchanged_msg)
 
         self.request.response.redirect(self.success_url)
 
