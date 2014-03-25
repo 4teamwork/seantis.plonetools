@@ -39,8 +39,9 @@ class Website(URI):
 
 def validate_email(value):
     try:
-        if value:
-            checkEmailAddress(value)
+        email = (value or u'').strip()
+        if email:
+            checkEmailAddress(email)
     except EmailAddressInvalid:
         raise Invalid(_(u'Invalid email address'))
     return True

@@ -5,7 +5,10 @@ Changelog
 0.11 (unreleased)
 -----------------
 
-- Adds custom title behavior which allos to set the title/id of an object
+- The email validator now strips whitespace before checking.
+  [href]
+
+- Adds custom title behavior which allows to set the title/id of an object
   easily.
   [href]
 
