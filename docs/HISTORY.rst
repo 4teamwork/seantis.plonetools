@@ -2,7 +2,7 @@
 Changelog
 =========
 
-0.11 (unreleased)
+0.11 (2014-03-26)
 -----------------
 
 - The email validator now strips whitespace before checking.
