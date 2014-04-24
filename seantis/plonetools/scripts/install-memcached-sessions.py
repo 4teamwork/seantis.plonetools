@@ -24,11 +24,12 @@ def main(app):
         log.error('BeakerSessionDataManager not found.')
         return
 
-    if isinstance(app['session_data_manager'], BeakerSessionDataManager):
-        log.warn('BeakerSessionDataManager is already installed.')
-        return
+    if 'session_data_manager' in app:
+        if isinstance(app['session_data_manager'], BeakerSessionDataManager):
+            log.warn('BeakerSessionDataManager is already installed.')
+            return
 
-    del app['session_data_manager']
+        del app['session_data_manager']
 
     dispatcher = app.manage_addProduct['BeakerSessionDataManager']
     addBeakerSessionDataManager(

@@ -2,6 +2,13 @@
 Changelog
 =========
 
+0.12 (unreleased)
+-----------------
+
+- BeakerSessionDataManager can now also be installed if no session data manager
+  exists in the Zope root.
+  [href]
+
 0.11 (2014-03-26)
 -----------------
 
