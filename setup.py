@@ -45,7 +45,8 @@ setup(name=name, version=version, description=description,
       install_requires=[
           'Plone>=4.3',
           'plone.api',
-          'plone.app.dexterity'
+          'plone.app.dexterity',
+          'five.grok'
       ],
       extras_require=dict(
           tests=tests_require
