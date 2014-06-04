@@ -5,6 +5,9 @@ Changelog
 0.12 (unreleased)
 -----------------
 
+- Adds a script to configure the mail host settings from the commandline.
+  [href]
+
 - BeakerSessionDataManager can now also be installed if no session data manager
   exists in the Zope root.
   [href]
