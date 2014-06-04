@@ -46,6 +46,7 @@ setup(name=name, version=version, description=description,
           'Plone>=4.3',
           'plone.api',
           'plone.app.dexterity',
+          'plone.directives.form',
           'five.grok'
       ],
       extras_require=dict(
