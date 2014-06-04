@@ -2,7 +2,7 @@
 Changelog
 =========
 
-0.12 (unreleased)
+0.12 (2014-06-04)
 -----------------
 
 - Adds a script to configure the mail host settings from the commandline.
