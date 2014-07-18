@@ -23,6 +23,18 @@ class BaseForm(ExtensibleForm, Form, TranslateMixin, StatusMessageMixin):
     The goal of this class is to remove duplicated code throughout our
     projects.
 
+    Note, to use fieldsets/widget hints and so forth you need to have a schema
+    inheriting from plone.supermodel.model.Schema:
+
+    class ISchema(plone.supermodel.model.Schema)
+        pass
+
+    And a form like this:
+
+    class Form(BaseForm, plone.autoform.form.AutoExtensibleForm):
+
+        schema = IMySchema
+
     """
 
     grok.baseclass()
