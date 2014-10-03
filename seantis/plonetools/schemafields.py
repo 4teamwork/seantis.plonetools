@@ -1,6 +1,8 @@
 import logging
 log = logging.getLogger('seantis.plonetools')
 
+import colour
+
 from urlparse import urlparse
 from zope.schema import TextLine, URI
 from zope.schema.interfaces import InvalidURI
@@ -37,21 +39,37 @@ class Website(URI):
         return super(Website, self).fromUnicode(value)
 
 
+class HexColor(TextLine):
+
+    def __init__(self, *args, **kwargs):
+        super(TextLine, self).__init__(*args, **kwargs)
+
+    def _validate(self, value):
+        super(TextLine, self)._validate(value)
+        validate_hex_color(value)
+
+
 def validate_email(value):
     try:
         email = (value or u'').strip()
         if email:
             checkEmailAddress(email)
     except EmailAddressInvalid:
-        raise Invalid(_(u'Invalid email address'))
+        raise Invalid(_(u"Invalid email address"))
     return True
 
 
+def validate_hex_color(value):
+    try:
+        colour.Color(value)
+    except (ValueError, AttributeError):
+        raise Invalid(_(u"Invalid hex color"))
+
 try:
     from plone.schemaeditor.fields import FieldFactory
-    EmailFactory = FieldFactory(Email, _(u'Email'))
+    EmailFactory = FieldFactory(Email, _(u"Email"))
     WebsiteFactory = FieldFactory(
-        Website, _(u'Website')
+        Website, _(u"Website")
     )
 except ImportError:
     pass

@@ -5,7 +5,8 @@ Changelog
 0.13 (unreleased)
 -----------------
 
-Nothing yet.
+- Adds HexColor schema field.
+  [href]
 
 0.12 (2014-06-04)
 -----------------

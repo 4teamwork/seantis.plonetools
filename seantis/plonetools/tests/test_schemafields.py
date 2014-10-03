@@ -12,3 +12,8 @@ class TestSchemafields(tests.IntegrationTestCase):
         schemafields.validate_email(u'test@example.org')
         schemafields.validate_email(u' test@example.org ')
         self.assertRaises(Invalid, schemafields.validate_email, u'asdf')
+
+    def test_validate_color(self):
+        schemafields.validate_hex_color('red')
+        schemafields.validate_hex_color('#000')
+        self.assertRaises(Invalid, schemafields.validate_hex_color, u'#0')
