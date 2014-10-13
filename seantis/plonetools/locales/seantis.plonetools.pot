@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-02-28 16:11+0000\n"
+"POT-Creation-Date: 2014-10-13 13:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,51 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: seantis.plonetools\n"
 
-#: ./browser/baseform.py:29
+#: ./browser/baseform.py:95
 msgid "Cancel"
 msgstr ""
 
-#: ./browser/baseform.py:68
+#: ./browser/baseform.py:43
 msgid "Changes saved"
 msgstr ""
 
-#: ./schemafields.py:51
+#: ./schemafields.py:95
+msgid "Color"
+msgstr ""
+
+#: ./schemafields.py:93
 msgid "Email"
 msgstr ""
 
-#: ./schemafields.py:45
+#: ./schemafields.py:96
+msgid "IBAN"
+msgstr ""
+
+#: ./schemafields.py:86
+msgid "Invalid IBAN number"
+msgstr ""
+
+#: ./schemafields.py:69
 msgid "Invalid email address"
 msgstr ""
 
-#: ./browser/baseform.py:70
+#: ./schemafields.py:79
+msgid "Invalid hex color"
+msgstr ""
+
+#: ./browser/baseform.py:42
+msgid "Item created"
+msgstr ""
+
+#: ./browser/baseform.py:44
 msgid "No changes saved"
 msgstr ""
 
-#: ./browser/baseform.py:28
+#: ./browser/baseform.py:94
 msgid "Save"
 msgstr ""
 
-#: ./schemafields.py:53
+#: ./schemafields.py:94
 msgid "Website"
 msgstr ""
 

@@ -5,6 +5,9 @@ Changelog
 0.13 (unreleased)
 -----------------
 
+- Adds IBAN schema field.
+  [href]
+
 - Adds HexColor schema field.
   [href]
 

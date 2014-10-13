@@ -2,6 +2,7 @@ import logging
 log = logging.getLogger('seantis.plonetools')
 
 import colour
+import stdnum.iban
 
 from urlparse import urlparse
 from zope.schema import TextLine, URI
@@ -49,6 +50,16 @@ class HexColor(TextLine):
         validate_hex_color(value)
 
 
+class IBAN(TextLine):
+
+    def __init__(self, *args, **kwargs):
+        super(TextLine, self).__init__(*args, **kwargs)
+
+    def _validate(self, value):
+        super(TextLine, self)._validate(value)
+        validate_iban(value)
+
+
 def validate_email(value):
     try:
         email = (value or u'').strip()
@@ -61,23 +72,38 @@ def validate_email(value):
 
 def validate_hex_color(value):
     try:
-        colour.Color(value)
+        color = (value or u'').strip()
+        if color:
+            colour.Color(value)
     except (ValueError, AttributeError):
         raise Invalid(_(u"Invalid hex color"))
 
+
+def validate_iban(value):
+    iban = (value or u'').strip()
+
+    if iban and not stdnum.iban.is_valid(iban):
+        raise Invalid(_(u"Invalid IBAN number"))
+
+    return True
+
+# optional plone.schemaeditor integration
 try:
     from plone.schemaeditor.fields import FieldFactory
     EmailFactory = FieldFactory(Email, _(u"Email"))
-    WebsiteFactory = FieldFactory(
-        Website, _(u"Website")
-    )
+    WebsiteFactory = FieldFactory(Website, _(u"Website"))
+    HexColorFactory = FieldFactory(HexColor, _(u"Color"))
+    IBANFactory = FieldFactory(IBAN, _(u"IBAN"))
 except ImportError:
     pass
 
 
+# optional plone.supermodel integration
 try:
     from plone.supermodel.exportimport import BaseHandler
     EmailHandler = BaseHandler(Email)
     WebsiteHandler = BaseHandler(Website)
+    HexColorHandler = BaseHandler(HexColor)
+    IBANHandler = BaseHandler(IBAN)
 except ImportError:
     pass

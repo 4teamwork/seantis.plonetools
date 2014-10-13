@@ -52,6 +52,28 @@
         component=".schemafields.WebsiteHandler"
     />
 
+    <!-- Hex Color Field. -->
+    <utility zcml:condition="installed plone.schemaeditor"
+        name="seantis.plonetools.schemafields.HexColor"
+        component=".schemafields.HexColorFactory"
+    />
+    
+    <utility zcml:condition="installed plone.supermodel"
+        name="seantis.plonetools.schemafields.HexColor"
+        component=".schemafields.HexColorHandler"
+    />
+
+    <!-- IBAN Field. -->
+    <utility zcml:condition="installed plone.schemaeditor"
+        name="seantis.plonetools.schemafields.IBAN"
+        component=".schemafields.IBANFactory"
+    />
+    
+    <utility zcml:condition="installed plone.supermodel"
+        name="seantis.plonetools.schemafields.IBAN"
+        component=".schemafields.IBANHandler"
+    />
+
     <!-- Events -->
     <subscriber
         for="seantis.plonetools.behaviors.ICustomTitle

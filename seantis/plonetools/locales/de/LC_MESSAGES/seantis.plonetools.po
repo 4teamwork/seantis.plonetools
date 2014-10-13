@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-02-28 16:11+0000\n"
+"POT-Creation-Date: 2014-10-13 13:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,31 +14,51 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./browser/baseform.py:29
+#: ./browser/baseform.py:95
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: ./browser/baseform.py:68
+#: ./browser/baseform.py:43
 msgid "Changes saved"
 msgstr "Änderungen gespeichert"
 
-#: ./schemafields.py:51
+#: ./schemafields.py:95
+msgid "Color"
+msgstr "Farbe"
+
+#: ./schemafields.py:93
 msgid "Email"
 msgstr "Email"
 
-#: ./schemafields.py:45
+#: ./schemafields.py:96
+msgid "IBAN"
+msgstr "IBAN"
+
+#: ./schemafields.py:86
+msgid "Invalid IBAN number"
+msgstr "Ungültige IBAN Nummer"
+
+#: ./schemafields.py:69
 msgid "Invalid email address"
 msgstr "Ungültige Email Adresse"
 
-#: ./browser/baseform.py:70
+#: ./schemafields.py:79
+msgid "Invalid hex color"
+msgstr "Ungültige Hex-Farbe"
+
+#: ./browser/baseform.py:42
+msgid "Item created"
+msgstr "Objekt erstellt"
+
+#: ./browser/baseform.py:44
 msgid "No changes saved"
 msgstr "Keine Änderungen gespeichert"
 
-#: ./browser/baseform.py:28
+#: ./browser/baseform.py:94
 msgid "Save"
 msgstr "Speichern"
 
-#: ./schemafields.py:53
+#: ./schemafields.py:94
 msgid "Website"
 msgstr "Webseite"
 
