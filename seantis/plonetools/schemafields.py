@@ -2,6 +2,7 @@ import logging
 log = logging.getLogger('seantis.plonetools')
 
 import colour
+import stdnum.ean
 import stdnum.iban
 
 from urlparse import urlparse
@@ -60,6 +61,16 @@ class IBAN(TextLine):
         validate_iban(value)
 
 
+class SwissSocialSecurityNumber(TextLine):
+
+    def __init__(self, *args, **kwargs):
+        super(TextLine, self).__init__(*args, **kwargs)
+
+    def _validate(self, value):
+        super(TextLine, self)._validate(value)
+        validate_swiss_ssn(value)
+
+
 def validate_email(value):
     try:
         email = (value or u'').strip()
@@ -67,6 +78,7 @@ def validate_email(value):
             checkEmailAddress(email)
     except EmailAddressInvalid:
         raise Invalid(_(u"Invalid email address"))
+
     return True
 
 
@@ -78,6 +90,8 @@ def validate_hex_color(value):
     except (ValueError, AttributeError):
         raise Invalid(_(u"Invalid hex color"))
 
+    return True
+
 
 def validate_iban(value):
     iban = (value or u'').strip()
@@ -87,6 +101,16 @@ def validate_iban(value):
 
     return True
 
+
+def validate_swiss_ssn(value):
+    ssn = (value or u'').strip().replace('.', '')
+
+    if ssn and not stdnum.ean.validate(ssn):
+        raise Invalid(_(u"Invalid Swiss Social Security number"))
+
+    return True
+
+
 # optional plone.schemaeditor integration
 try:
     from plone.schemaeditor.fields import FieldFactory
@@ -94,6 +118,9 @@ try:
     WebsiteFactory = FieldFactory(Website, _(u"Website"))
     HexColorFactory = FieldFactory(HexColor, _(u"Color"))
     IBANFactory = FieldFactory(IBAN, _(u"IBAN"))
+    SwissSocialSecurityNumberFactory = FieldFactory(
+        SwissSocialSecurityNumber, _(u"Swiss Social Security Number")
+    )
 except ImportError:
     pass
 
@@ -105,5 +132,6 @@ try:
     WebsiteHandler = BaseHandler(Website)
     HexColorHandler = BaseHandler(HexColor)
     IBANHandler = BaseHandler(IBAN)
+    SwissSocialSecurityNumberHandler = BaseHandler(SwissSocialSecurityNumber)
 except ImportError:
     pass

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-13 13:41+0000\n"
+"POT-Creation-Date: 2014-10-13 14:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,27 +22,31 @@ msgstr "Abbrechen"
 msgid "Changes saved"
 msgstr "Änderungen gespeichert"
 
-#: ./schemafields.py:95
+#: ./schemafields.py:119
 msgid "Color"
 msgstr "Farbe"
 
-#: ./schemafields.py:93
+#: ./schemafields.py:117
 msgid "Email"
 msgstr "Email"
 
-#: ./schemafields.py:96
+#: ./schemafields.py:120
 msgid "IBAN"
 msgstr "IBAN"
 
-#: ./schemafields.py:86
+#: ./schemafields.py:100
 msgid "Invalid IBAN number"
 msgstr "Ungültige IBAN Nummer"
 
-#: ./schemafields.py:69
+#: ./schemafields.py:109
+msgid "Invalid Swiss Social Security number"
+msgstr ""
+
+#: ./schemafields.py:80
 msgid "Invalid email address"
 msgstr "Ungültige Email Adresse"
 
-#: ./schemafields.py:79
+#: ./schemafields.py:91
 msgid "Invalid hex color"
 msgstr "Ungültige Hex-Farbe"
 
@@ -58,7 +62,11 @@ msgstr "Keine Änderungen gespeichert"
 msgid "Save"
 msgstr "Speichern"
 
-#: ./schemafields.py:94
+#: ./schemafields.py:122
+msgid "Swiss Social Security Number"
+msgstr "Neue AHV Nummer"
+
+#: ./schemafields.py:118
 msgid "Website"
 msgstr "Webseite"
 

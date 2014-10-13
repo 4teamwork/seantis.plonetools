@@ -24,3 +24,11 @@ class TestSchemafields(tests.IntegrationTestCase):
         schemafields.validate_iban(u'')
         schemafields.validate_iban(u'BE31435411161155')
         self.assertRaises(Invalid, schemafields.validate_iban, u'asdf')
+
+    def test_swiss_social_security_number(self):
+        schemafields.validate_swiss_ssn(u'')
+        schemafields.validate_swiss_ssn(u'756.9217.0769.85')
+        schemafields.validate_swiss_ssn(u'7569217076985')
+        self.assertRaises(
+            Invalid, schemafields.validate_iban, u'756.9217.0769.84'
+        )

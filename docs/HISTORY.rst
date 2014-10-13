@@ -5,6 +5,9 @@ Changelog
 0.13 (unreleased)
 -----------------
 
+- Adds Swiss social security number ("Neue AHV Nummer") field.
+  [href]
+
 - Adds IBAN schema field.
   [href]
 
