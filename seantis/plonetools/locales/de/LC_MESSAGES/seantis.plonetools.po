@@ -40,7 +40,7 @@ msgstr "Ungültige IBAN Nummer"
 
 #: ./schemafields.py:109
 msgid "Invalid Swiss Social Security number"
-msgstr ""
+msgstr "Ungültige Sozialversicherungsnummer"
 
 #: ./schemafields.py:80
 msgid "Invalid email address"
