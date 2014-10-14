@@ -105,7 +105,7 @@ def validate_iban(value):
 def validate_swiss_ssn(value):
     ssn = (value or u'').strip().replace('.', '')
 
-    if ssn and not stdnum.ean.validate(ssn):
+    if ssn and not stdnum.ean.is_valid(ssn):
         raise Invalid(_(u"Invalid Swiss Social Security number"))
 
     return True
