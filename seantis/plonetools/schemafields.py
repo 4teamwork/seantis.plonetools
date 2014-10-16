@@ -77,7 +77,7 @@ def validate_email(value):
         if email:
             checkEmailAddress(email)
     except EmailAddressInvalid:
-        raise Invalid(_(u"Invalid email address"))
+        raise Invalid(_(u"Invalid email address: {}".format(email)))
 
     return True
 
@@ -88,7 +88,7 @@ def validate_hex_color(value):
         if color:
             colour.Color(value)
     except (ValueError, AttributeError):
-        raise Invalid(_(u"Invalid hex color"))
+        raise Invalid(_(u"Invalid hex color: {}".format(color)))
 
     return True
 
@@ -97,7 +97,7 @@ def validate_iban(value):
     iban = (value or u'').strip()
 
     if iban and not stdnum.iban.is_valid(iban):
-        raise Invalid(_(u"Invalid IBAN number"))
+        raise Invalid(_(u"Invalid IBAN number: {}".format(iban)))
 
     return True
 
@@ -106,7 +106,9 @@ def validate_swiss_ssn(value):
     ssn = (value or u'').strip().replace('.', '')
 
     if ssn and not stdnum.ean.is_valid(ssn):
-        raise Invalid(_(u"Invalid Swiss Social Security number"))
+        raise Invalid(_(u"Invalid Swiss Social Security number: {}".format(
+            ssn
+        )))
 
     return True
 
