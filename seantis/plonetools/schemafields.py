@@ -2,7 +2,7 @@ import logging
 log = logging.getLogger('seantis.plonetools')
 
 import colour
-import stdnum.ean
+import stdnum.ch.ssn
 import stdnum.iban
 
 from urlparse import urlparse
@@ -103,9 +103,9 @@ def validate_iban(value):
 
 
 def validate_swiss_ssn(value):
-    ssn = (value or u'').strip().replace('.', '')
+    ssn = (value or u'').strip()
 
-    if ssn and not stdnum.ean.is_valid(ssn):
+    if ssn and not stdnum.ch.ssn.is_valid(ssn):
         raise Invalid(_(u"Invalid Swiss Social Security number: {}".format(
             ssn
         )))
