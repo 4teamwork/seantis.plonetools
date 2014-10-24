@@ -2,7 +2,7 @@
 Changelog
 =========
 
-0.13 (unreleased)
+0.13 (2014-10-22)
 -----------------
 
 - Adds Swiss social security number ("Neue AHV Nummer") field.
