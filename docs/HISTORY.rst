@@ -5,7 +5,8 @@ Changelog
 0.14 (unreleased)
 -----------------
 
-Nothing yet.
+- Ports async clockserver module from seantis.dir.events.
+  [href]
 
 0.13 (2014-10-22)
 -----------------
