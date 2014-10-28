@@ -5,6 +5,10 @@ Changelog
 0.14 (unreleased)
 -----------------
 
+- Adds a contextmanager with which code paths can be run under a different
+  role.
+  [href]
+
 - Ports async clockserver module from seantis.dir.events.
   [href]
 
