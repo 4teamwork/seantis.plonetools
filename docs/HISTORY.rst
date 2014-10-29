@@ -5,7 +5,8 @@ Changelog
 0.15 (unreleased)
 -----------------
 
-Nothing yet.
+- Removes forgotten print statement.
+  [href]
 
 0.14 (2014-10-28)
 -----------------

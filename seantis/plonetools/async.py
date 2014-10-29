@@ -62,7 +62,6 @@ class ClockLogger(object):
         self.path = path
 
     def return_code(self, msg):
-        print msg
         groups = logexpr.findall(msg)
         return groups and int(groups[0]) or None
 
