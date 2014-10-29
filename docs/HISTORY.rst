@@ -2,7 +2,7 @@
 Changelog
 =========
 
-0.15 (unreleased)
+0.15 (2014-10-29)
 -----------------
 
 - Removes forgotten print statement.
