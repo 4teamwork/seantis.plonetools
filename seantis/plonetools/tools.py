@@ -53,14 +53,14 @@ def safe_html(html):
 
 
 @public
-def get_parent(obj):
+def get_parent(obj, catalog_id='portal_catalog'):
     """ Gets the parent of the obj or brain. The result is of the same type
     as the parameter given.
 
     """
 
     if ICatalogBrain.providedBy(obj):
-        catalog = api.portal.get_tool('portal_catalog')
+        catalog = api.portal.get_tool(catalog_id)
         brains = catalog(
             path={'query': '/'.join(obj.getPath().split('/')[:-1])}
         )
@@ -117,21 +117,21 @@ def order_fields_by_schema(fields, schema):
 
 
 @public
-def add_attribute_to_metadata(attribute):
+def add_attribute_to_metadata(attribute, catalog_id='portal_catalog'):
     """ Adds the given attribute to the metadata in the portal catalog. If
     the attribute is alredy there function silently skips it.
 
     """
-    zcatalog = api.portal.get_tool('portal_catalog')._catalog
+    zcatalog = api.portal.get_tool(catalog_id)._catalog
 
     if attribute not in zcatalog.schema:
         zcatalog.addColumn(attribute)
 
 
 @public
-def get_brain_by_object(obj):
+def get_brain_by_object(obj, catalog_id='portal_catalog'):
     """ The inverse of getObject. """
-    catalog = api.portal.get_tool('portal_catalog')
+    catalog = api.portal.get_tool(catalog_id)
 
     return catalog(path={'query': '/'.join(obj.getPhysicalPath())})[0]
 

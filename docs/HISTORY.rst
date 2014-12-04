@@ -5,7 +5,9 @@ Changelog
 0.16 (unreleased)
 -----------------
 
-Nothing yet.
+- Functions using the catalog can now operate on other catalogs than
+  'portal-catalog'.
+  [href]
 
 0.15 (2014-10-29)
 -----------------

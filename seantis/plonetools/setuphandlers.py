@@ -44,7 +44,9 @@ e.g.
 """
 
 
-def add_catalog_indexes(module, wanted, context, logger=None):
+def add_catalog_indexes(
+    module, wanted, context, logger=None, catalog_id='portal_catalog'
+):
     """Method to add our wanted indexes to the portal_catalog.
 
     When called from the import_various method below, 'context' is
@@ -67,7 +69,7 @@ def add_catalog_indexes(module, wanted, context, logger=None):
         'profile-{}:default'.format(module), 'catalog'
     )
 
-    catalog = getToolByName(context, 'portal_catalog')
+    catalog = getToolByName(context, catalog_id)
     indexes = catalog.indexes()
 
     indexables = []
@@ -82,7 +84,7 @@ def add_catalog_indexes(module, wanted, context, logger=None):
         catalog.manage_reindexIndex(ids=indexables)
 
 
-def import_indexes(module, wanted, context):
+def import_indexes(module, wanted, context, catalog_id='portal_catalog'):
     """Import step for configuration that is not handled in xml files.
     """
     # Only run step if a flag file is present
@@ -90,4 +92,6 @@ def import_indexes(module, wanted, context):
         return
 
     site = context.getSite()
-    add_catalog_indexes(module, wanted, site, context.getLogger(module))
+    add_catalog_indexes(
+        module, wanted, site, context.getLogger(module), catalog_id
+    )
