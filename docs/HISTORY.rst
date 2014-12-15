@@ -2,7 +2,7 @@
 Changelog
 =========
 
-0.16 (unreleased)
+0.16 (2014-12-15)
 -----------------
 
 - Functions using the catalog can now operate on other catalogs than
