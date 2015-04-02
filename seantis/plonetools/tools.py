@@ -257,3 +257,41 @@ def profile(fn):
         return result
 
     return wrapper
+
+
+@public
+def profile_memory(fn):
+    """ Naive profiling of a function.
+
+    Works on unix systems only. Might actually not display the correct
+    amount of memory"""
+
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+
+        try:
+            import resource
+        except ImportError:
+            return fn(*args, **kwargs)
+        else:
+            start = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+
+            result = fn(*args, **kwargs)
+
+            end = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+
+            if sys.platform == "darwin":
+                # OSX seems to use Bytes instead of kB
+                start = start / (1024 * 1024)
+                end = end / (1024 * 1024)
+            else:
+                start = start / 1024
+                end = end / 1024
+
+            print '%s altered memory usage from %i MB to %i MB (%i MB)' % (
+                fn.__name__, start, end, (end-start)
+            )
+
+            return result
+
+    return wrapper
