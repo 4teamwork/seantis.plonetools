@@ -282,14 +282,23 @@ def profile_memory(fn):
 
             if sys.platform == "darwin":
                 # OSX seems to use Bytes instead of kB
-                start = start / (1024 * 1024)
-                end = end / (1024 * 1024)
-            else:
                 start = start / 1024
                 end = end / 1024
 
-            print '%s altered memory usage from %i MB to %i MB (%i MB)' % (
-                fn.__name__, start, end, (end-start)
+            start = float(start)
+            end = float(end)
+
+            start_string = '%.2f kB' % (start)
+            end_string = '%.2f kB' % (end)
+            diff_string = '%.2f kB' % ((end-start))
+            if start / 1024 > 1 and end / 1024 > 1:
+                start_string = '%.2f MB' % (start / 1024)
+                end_string = '%.2f MB' % (end / 1024)
+            if (end-start) / 1024 > 1:
+                diff_string = '%.2f MB' % ((end-start) / 1024)
+
+            print '%s altered memory usage from %s to %s (%s)' % (
+                fn.__name__, start_string, end_string, diff_string
             )
 
             return result
