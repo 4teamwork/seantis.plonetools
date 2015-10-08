@@ -5,7 +5,8 @@ Changelog
 0.17 (unreleased)
 -----------------
 
-Nothing yet.
+- Add memory profiling decorator.
+  [msom]
 
 0.16 (2014-12-15)
 -----------------
