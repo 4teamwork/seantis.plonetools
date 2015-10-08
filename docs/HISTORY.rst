@@ -2,10 +2,13 @@
 Changelog
 =========
 
-0.17 (unreleased)
+0.17 (2015-10-08)
 -----------------
 
 - Add memory profiling decorator.
+  [msom]
+
+- Update test dependencies.
   [msom]
 
 0.16 (2014-12-15)
