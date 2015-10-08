@@ -10,7 +10,8 @@ version = '0.17'
 # needed for tests and to use the default testcase of seantis.plonetools
 tests_require = [
     'plone.app.testing',
-    'collective.betterbrowser'
+    'collective.betterbrowser',
+    'unittest2'
 ]
 
 
