@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
+import sys
 
 from App.config import getConfiguration, setConfiguration
+from cStringIO import StringIO
 from plone import api
-
+from Products.ZCatalog.interfaces import ICatalogBrain
+from seantis.plonetools import tests, tools
 from zope import i18n
 from zope.i18nmessageid import MessageFactory
-
-from Products.ZCatalog.interfaces import ICatalogBrain
-
-from seantis.plonetools import tests
-from seantis.plonetools import tools
 
 
 class TestTools(tests.IntegrationTestCase):
@@ -156,4 +154,32 @@ class TestTools(tests.IntegrationTestCase):
         self.assertEqual(
             sorted(u'AaÄäÖöOo', key=tools.unicode_collate_sortkey()),
             list(u'aAäÄoOöÖ')
+        )
+
+    def test_profile(self):
+
+        @tools.profile
+        def profiled_method():
+            pass
+
+        old_stdout = sys.stdout
+        sys.stdout = mystdout = StringIO()
+        profiled_method()
+        sys.stdout = old_stdout
+
+        self.assertTrue(mystdout.getvalue().startswith('profiled_method took'))
+
+    def test_profile_memory(self):
+
+        @tools.profile_memory
+        def profiled_method():
+            pass
+
+        old_stdout = sys.stdout
+        sys.stdout = mystdout = StringIO()
+        profiled_method()
+        sys.stdout = old_stdout
+
+        self.assertTrue(mystdout.getvalue().startswith(
+            'profiled_method altered memory usage from')
         )
