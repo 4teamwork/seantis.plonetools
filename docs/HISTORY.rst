@@ -2,7 +2,7 @@
 Changelog
 =========
 
-0.18 (unreleased)
+0.18 (2015-11-12)
 -----------------
 
 - Avoid empty usernames for unrestricted users based on anonymous users.
