@@ -5,7 +5,8 @@ Changelog
 0.18 (unreleased)
 -----------------
 
-Nothing yet.
+- Avoid empty usernames for unrestricted users based on anonymous users.
+  [msom]
 
 0.17 (2015-10-08)
 -----------------

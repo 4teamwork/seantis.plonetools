@@ -41,7 +41,7 @@ def run_as(role):
             # tracebacks in the error_log,
             # so it is an important thing to store.
             tmp_user = UnrestrictedUser(
-                sm.getUser().getId(), '', [role], ''
+                sm.getUser().getId() or 'Anonymous User', '', [role], ''
             )
 
             # Wrap the user in the acquisition context of the portal
