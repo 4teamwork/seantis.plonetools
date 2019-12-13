@@ -9,90 +9,77 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="seantis.plonetools"
     >
-
     <!-- Dependencies -->
     <includeDependencies package="." />
-
     <!-- Translation -->
     <i18n:registerTranslations directory="locales" />
-
     <!-- Profiles -->
-    <genericsetup:registerProfile 
+    <genericsetup:registerProfile
         name="default"
         title="Seantis Plonetools"
         description="Default Profile for Seantis Plonetools"
         directory="profiles/default"
         provides="Products.GenericSetup.interfaces.EXTENSION"
     />
-
     <!-- Resources -->
     <browser:resourceDirectory name="seantis.plonetools.js" directory="js"/>
-
     <!-- Email Textfield with Validator and Schemaeditor/Supermodel support -->
-    <utility zcml:condition="installed plone.schemaeditor"
+<!--     <utility zcml:condition="installed plone.schemaeditor"
         name="seantis.plonetools.schemafields.Email"
         component=".schemafields.EmailFactory"
-    />
-    
+ -->    />
     <utility zcml:condition="installed plone.supermodel"
         name="seantis.plonetools.schemafields.Email"
         component=".schemafields.EmailHandler"
     />
-
     <!-- URI Textfield with Validator and Schemaeditor/Supermodel support.
-         Doesn't require the user to specify http:// explicitly 
+         Doesn't require the user to specify http:// explicitly
      -->
-    <utility zcml:condition="installed plone.schemaeditor"
+<!--     <utility zcml:condition="installed plone.schemaeditor"
         name="seantis.plonetools.schemafields.Website"
         component=".schemafields.WebsiteFactory"
     />
-    
+ -->
     <utility zcml:condition="installed plone.supermodel"
         name="seantis.plonetools.schemafields.Website"
         component=".schemafields.WebsiteHandler"
     />
-
     <!-- Hex Color Field. -->
-    <utility zcml:condition="installed plone.schemaeditor"
+<!--     <utility zcml:condition="installed plone.schemaeditor"
         name="seantis.plonetools.schemafields.HexColor"
         component=".schemafields.HexColorFactory"
     />
-    
+ -->
     <utility zcml:condition="installed plone.supermodel"
         name="seantis.plonetools.schemafields.HexColor"
         component=".schemafields.HexColorHandler"
     />
-
     <!-- IBAN Field. -->
-    <utility zcml:condition="installed plone.schemaeditor"
+<!--     <utility zcml:condition="installed plone.schemaeditor"
         name="seantis.plonetools.schemafields.IBAN"
         component=".schemafields.IBANFactory"
     />
-    
+ -->
     <utility zcml:condition="installed plone.supermodel"
         name="seantis.plonetools.schemafields.IBAN"
         component=".schemafields.IBANHandler"
     />
-
     <!-- Swiss Social Security Number Field. -->
-    <utility zcml:condition="installed plone.schemaeditor"
+<!--     <utility zcml:condition="installed plone.schemaeditor"
         name="seantis.plonetools.schemafields.SwissSocialSecurityNumber"
         component=".schemafields.SwissSocialSecurityNumberFactory"
     />
-    
+ -->
     <utility zcml:condition="installed plone.supermodel"
         name="seantis.plonetools.schemafields.SwissSocialSecurityNumber"
         component=".schemafields.SwissSocialSecurityNumberHandler"
     />
-
-
     <!-- Events -->
     <subscriber
         for="seantis.plonetools.behaviors.ICustomTitle
              zope.lifecycleevent.interfaces.IObjectModifiedEvent"
         handler=".behaviors.customtitle.on_object_modified"
     />
-
     <!-- Behaviors -->
     <plone:behavior
         title="Custom Title"
@@ -101,5 +88,4 @@
         provides=".behaviors.ICustomTitle"
     />
     <adapter factory=".behaviors.CustomTitle" />
-
 </configure>
